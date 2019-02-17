@@ -63,3 +63,30 @@ func test_paddle_ignores_things_that_are_not_balls():
 	var p = Paddle.new()
 	p._on_Paddle_area_entered(obj)
 	assert_true(true, 'if we get here everything is ok')
+
+func test_get_set_increment_speed():
+	assert_accessors(Paddle.new(), 'increment_speed', 10, 50)
+	
+func test_when_bounced_paddle_increases_ball_speed():
+	var p = Paddle.new()
+	var b = Ball.new()
+	var orig_speed = b.get_speed()
+	p.set_increment_speed(13)
+	p.bounce(b)
+	assert_eq(b.get_speed(), orig_speed + 13)
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
