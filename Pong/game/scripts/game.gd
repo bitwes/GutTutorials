@@ -5,9 +5,9 @@ onready var _orig_position = $Ball.get_position()
 onready var _p1_default_pos = $LeftPaddle.get_position()
 onready var _p2_default_pos = $RightPaddle.get_position()
 
-onready var _scores = {
-	p1 = {value = 0, label = $P1Score},
-	p2 = {value = 0, label = $P2Score}
+onready var _players = {
+	p1 = {value = 0, label = $P1Score, paddle = $LeftPaddle},
+	p2 = {value = 0, label = $P2Score, paddle = $RightPaddle}
 }
 
 func _process(delta):
@@ -21,23 +21,27 @@ func _process(delta):
 	if(Input.is_action_pressed("right_up")):
 		$RightPaddle.up(delta)
 
-func _score(which):
-	_scores[which].value += 1
-	if(_scores[which].value > 5):
-		_scores[which].value = 5
-	_scores[which].label.set_text(str(_scores[which].value))
+func _reset_positions():
 	$Ball.set_position(_orig_position)
 	$Ball.reset()
+	_players.p2.paddle.set_position(_p2_default_pos)
+	_players.p1.paddle.set_position(_p1_default_pos)
+	
+
+func _score(which):
+	_players[which].value += 1
+	if(_players[which].value > 5):
+		_players[which].value = 5
+	_players[which].label.set_text(str(_players[which].value))
+	_reset_positions()
 	if(which == 'p2'):
 		$Ball.set_direction(Vector2(1, 0))
-	$RightPaddle.set_position(_p2_default_pos)
-	$LeftPaddle.set_position(_p1_default_pos)
 
 func get_p1_score():
-	return _scores.p1.value
+	return _players.p1.value
 
 func get_p2_score():
-	return _scores.p2.value
+	return _players.p2.value
 
 func _on_ScoreBoxLeft_score():
 	_score('p2')
@@ -49,7 +53,7 @@ func get_ball():
 	return $Ball
 	
 func get_p1_paddle():
-	return $LeftPaddle
+	return _players.p1.paddle
 
 func get_p2_paddle():
-	return $RightPaddle
+	return _players.p2.paddle
