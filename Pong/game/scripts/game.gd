@@ -1,8 +1,8 @@
 extends Node2D
 
-var _scores = {
-	p1 = 0,
-	p2 = 0
+onready var _scores = {
+	p1 = {value = 0, label = $P1Score},
+	p2 = {value = 0, label = $P2Score}
 }
 
 func _process(delta):
@@ -17,21 +17,21 @@ func _process(delta):
 		$RightPaddle.up(delta)
 
 func _score(which):
-	_scores[which] += 1
-	if(_scores[which] > 5):
-		_scores[which] = 5
+
+	_scores[which].value += 1
+	if(_scores[which].value > 5):
+		_scores[which].value = 5
+	_scores[which].label.set_text(str(_scores[which].value))
 
 func get_p1_score():
-	return _scores.p1
+	return _scores.p1.value
 
 func get_p2_score():
-	return _scores.p2
+	return _scores.p2.value
 
 func _on_ScoreBoxLeft_score():
 	_score('p2')
-	$P2Score.set_text(str(_scores.p2))
 	
 func _on_ScoreBoxRight_score():
 	_score('p1')
-	$P1Score.set_text(str(_scores.p1))
 	

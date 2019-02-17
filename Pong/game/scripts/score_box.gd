@@ -1,6 +1,9 @@
 extends Area2D
 
+var Ball = load('res://scripts/ball.gd')
+
 signal score
 
 func _on_ScoreBox_area_entered(area):
-	emit_signal('score')
+	if(area is Ball):
+		emit_signal('score')
