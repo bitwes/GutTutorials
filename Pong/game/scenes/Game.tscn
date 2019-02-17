@@ -36,4 +36,8 @@ position = Vector2( 10, 298 )
 
 position = Vector2( 1012, 302 )
 
+[connection signal="score" from="ScoreBoxLeft" to="." method="_on_ScoreBoxLeft_score"]
+
+[connection signal="score" from="ScoreBoxRight" to="." method="_on_ScoreBoxRight_score"]
+
 
