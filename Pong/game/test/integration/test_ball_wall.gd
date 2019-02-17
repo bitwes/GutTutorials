@@ -19,15 +19,15 @@ func after_each():
 	remove_child(_wall)
 
 func test_assert_ball_reflected_down():
-	_wall.set_position(Vector2(200, 100))
+	_wall.set_position(Vector2(200, 150))
 	_ball.set_direction(Vector2(0, -1))
 
-	yield(yield_for(2, 'waiting for bounce'), YIELD)
+	yield(yield_for(1, 'waiting for bounce'), YIELD)
 	assert_eq(_ball.get_direction().y, 1)
 	
 func test_assert_ball_reflected_up():
-	_wall.set_position(Vector2(200, 300))
+	_wall.set_position(Vector2(200, 250))
 	_ball.set_direction(Vector2(0, 1))
 	
-	yield(yield_for(2, 'waiting for bounce'), YIELD)
+	yield(yield_for(1, 'waiting for bounce'), YIELD)
 	assert_eq(_ball.get_direction().y, -1)

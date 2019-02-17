@@ -20,17 +20,17 @@ func after_each():
 
 
 func test_ball_bounces_from_righ():	
-	_paddle.set_position(Vector2(100, 200))
+	_paddle.set_position(Vector2(150, 200))
 	_ball.set_position(Vector2(200, 200))
 	_ball.set_direction(Vector2(-1, 0))
 
-	yield(yield_for(2), YIELD)	
+	yield(yield_for(1), YIELD)	
 	assert_gt(_ball.get_direction().x, 0)
 	
 func test_ball_bounces_from_left():
 	_ball.set_position(Vector2(200, 200))
-	_paddle.set_position(Vector2(300, 200))
+	_paddle.set_position(Vector2(250, 200))
 	_ball.set_direction(Vector2(1, 0))
 
-	yield(yield_for(2), YIELD)
+	yield(yield_for(1), YIELD)
 	assert_lt(_ball.get_direction().x, 0)

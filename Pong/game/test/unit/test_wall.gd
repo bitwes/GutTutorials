@@ -20,4 +20,8 @@ func test_boucing_up_ball_sets_direction_down():
 	w.bounce(b)
 	assert_called(b, 'set_direction', [Vector2(0, 1)])	
 	
-	
+func test_wall_ignores_non_ball_objects():
+	var obj = Node2D.new()
+	var w = Wall.new()
+	w._on_Wall_area_entered(obj)
+	assert_true(true, 'if we get here then we are ok')

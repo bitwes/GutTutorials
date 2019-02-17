@@ -1,5 +1,5 @@
 extends Area2D
-
+var Ball = load('res://scripts/ball.gd')
 var _speed = 100
 
 func get_speed():
@@ -21,4 +21,5 @@ func bounce(ball):
 	ball.set_direction(new_dir.normalized())
 
 func _on_Paddle_area_entered(area):
-	bounce(area)
+	if(area is Ball):
+		bounce(area)

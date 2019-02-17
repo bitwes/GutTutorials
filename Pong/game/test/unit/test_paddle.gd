@@ -58,3 +58,8 @@ func test_chooses_random_angle_on_bounce():
 	assert_eq(normalized, 500, 'The direction should be normalized')
 		
 		
+func test_paddle_ignores_things_that_are_not_balls():
+	var obj = Node2D.new()
+	var p = Paddle.new()
+	p._on_Paddle_area_entered(obj)
+	assert_true(true, 'if we get here everything is ok')
