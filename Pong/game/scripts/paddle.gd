@@ -19,3 +19,6 @@ func bounce(ball):
 	new_dir.x = new_dir.x * -1
 	new_dir.y = randf() * 2 - 1
 	ball.set_direction(new_dir.normalized())
+
+func _on_Paddle_area_entered(area):
+	bounce(area)

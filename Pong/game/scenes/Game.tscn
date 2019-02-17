@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/Ball.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Wall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Paddle.tscn" type="PackedScene" id=3]
 
 [node name="Game" type="Node2D" index="0"]
 
@@ -14,5 +15,13 @@ position = Vector2( 511, 16 )
 [node name="BottomWall" parent="." index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 512, 595 )
+
+[node name="LeftPaddle" parent="." index="3" instance=ExtResource( 3 )]
+
+position = Vector2( 177, 228 )
+
+[node name="RightPaddle" parent="." index="4" instance=ExtResource( 3 )]
+
+position = Vector2( 773, 238 )
 
 
