@@ -17,4 +17,5 @@ func down(delta):
 func bounce(ball):
 	var new_dir = ball.get_direction()
 	new_dir.x = new_dir.x * -1
-	ball.set_direction(new_dir)
+	new_dir.y = randf() * 2 - 1
+	ball.set_direction(new_dir.normalized())
