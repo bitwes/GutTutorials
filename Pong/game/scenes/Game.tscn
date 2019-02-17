@@ -17,7 +17,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="TopWall" parent="." index="1" instance=ExtResource( 3 )]
 
-position = Vector2( 511, 50 )
+position = Vector2( 512, 50 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="BottomWall" parent="." index="2" instance=ExtResource( 3 )]
@@ -37,7 +37,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="ScoreBoxLeft" parent="." index="5" instance=ExtResource( 5 )]
 
-position = Vector2( -9, 298 )
+position = Vector2( -10, 298 )
 
 [node name="ScoreBoxRight" parent="." index="6" instance=ExtResource( 5 )]
 
