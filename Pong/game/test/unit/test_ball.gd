@@ -49,3 +49,19 @@ func test_cannot_set_speed_higher_than_max_speed():
 	var b = Ball.new()
 	b.set_speed(1000)
 	assert_eq(b.get_speed(), b.get_max_speed())
+
+func test_reset_resets_speed():
+	var b = Ball.new()
+	var orig_speed = b.get_speed()
+	b.increment_speed(10)
+	b.reset()
+	assert_eq(b.get_speed(), orig_speed)
+
+func test_reset_resets_direction():
+	var b = Ball.new()
+	var orig_dir = b.get_direction()
+	b.set_direction(Vector2(50, 50))
+	b.reset()
+	assert_eq(b.get_direction(), orig_dir)
+
+

@@ -1,6 +1,7 @@
 extends Area2D
 
 var _direction = Vector2(-1, 0)
+var _start_speed = 100
 var _speed = 100
 var _max_speed = 300
 
@@ -29,3 +30,8 @@ func set_direction(new_dir):
 	
 func increment_speed(how_much):
 	set_speed(_speed + how_much)
+
+func reset():
+	set_speed(_start_speed)
+	set_direction(Vector2(-1, 0))
+	
