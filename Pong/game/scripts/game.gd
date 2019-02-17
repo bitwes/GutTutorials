@@ -30,6 +30,8 @@ func _process(delta):
 	if(Input.is_action_pressed("right_up")):
 		$RightPaddle.up(delta)
 
+	$Speed.set_text(str('Speed:  ', $Ball.get_speed()))
+
 func _reset_positions():
 	$Ball.set_position(_orig_position)
 	$Ball.reset()
