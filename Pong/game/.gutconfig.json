@@ -3,7 +3,7 @@
   "should_maximize":false,
   "should_exit":true,
   "ignore_pause":true,
-  "log": 3,
+  "log": 1,
   "opacity":100,
   "inner_class":"",
   "double_strategy":"partial"
