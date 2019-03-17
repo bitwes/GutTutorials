@@ -1,0 +1,6 @@
+{
+  "dirs":["res://test/unit"],
+  "include_subdirs":false,
+  "log_level":1,
+  "should_exit":true
+}
