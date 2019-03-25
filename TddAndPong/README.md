@@ -1,4 +1,10 @@
-# Requirements
+# About this directory.
+Each directory contains code as it is at then end of a Butch Teaches Typing episode.  If you haven't been following along then just grab the code for the episode prior to the one you are starting with.
+
+Also, the "addons" folder is ignored in all of these projects so you will have to install Gut yourself each time.
+
+
+# Requirements for Pong
 
 #### Ball
 * Bouncing off of ceiling and floor changes `y` direction as a reflection.
