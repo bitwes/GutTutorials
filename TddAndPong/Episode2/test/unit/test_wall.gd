@@ -14,9 +14,8 @@ func test_bounce_inverts_ball_y_diredtion():
 	stub(ball, 'get_direction').to_return(dir)
 	
 	wall.bounce(ball)
-	var params = get_call_parameters(ball, 'set_direction')
-	assert_eq(params[0], dir * Vector2(1, -1))
-
+	assert_called(ball, 'set_direction', [dir * Vector2(1, -1)])
+	
 func test_get_set_color():
 	assert_accessors(Wall.new(), 'color', Color(1, 1, 1), Color(0, 0, 0))
 	
