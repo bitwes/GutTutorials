@@ -22,7 +22,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="BottomWall" parent="." index="2" instance=ExtResource( 3 )]
 
-position = Vector2( 512, 550 )
+position = Vector2( 511, 549 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="LeftPaddle" parent="." index="3" instance=ExtResource( 4 )]
