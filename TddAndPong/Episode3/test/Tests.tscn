@@ -14,6 +14,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_editor_icon": ExtResource( 2 )
 }
+_select_script = "test_paddle"
 _run_on_load = true
 _should_maximize = true
 _yield_between_tests = false
