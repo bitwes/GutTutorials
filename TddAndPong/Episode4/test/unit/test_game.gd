@@ -54,8 +54,18 @@ class TestTheBasics:
 		p2kb.emit_signal('kill_ball')
 		assert_eq(_game.get_p1_score(), 1)
 
+	func test_when_game_starts_ball_moves_towards_p1():
+		var ball = _game.get_ball()
+		assert_eq(ball.get_direction(), Vector2(1, 0))
 
+	func test_when_p2_scores_ball_moves_towards_p2():
+		_game.p2_scores()
+		assert_eq(_game.get_ball().get_direction(), Vector2(-1, 0))
 
+	func test_when_p1_scores_ball_moves_towards_p1():
+		_game.get_ball().set_direction(Vector2(0, 0))
+		_game.p1_scores()
+		assert_eq(_game.get_ball().get_direction(), Vector2(1, 0))
 class TestGUI:
 	extends 'res://addons/gut/test.gd'
 

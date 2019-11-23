@@ -11,7 +11,7 @@ func _update_display():
 func _ready():
 	_ball_start_pos =  $Ball.get_position()
 	$Ball.set_speed(300)
-	$Ball.set_direction(Vector2(1, 1))
+	$Ball.set_direction(Vector2(1, 0))
 
 	$P1Paddle.set_speed(300)
 	$P2Paddle.set_speed(300)
@@ -37,11 +37,13 @@ func _on_P2KillBox_kill_ball():
 func p1_scores():
 	$Ball.set_position(_ball_start_pos)
 	_p1_score += 1
+	$Ball.set_direction(Vector2(1, 0))
 	_update_display()
 
 func p2_scores():
 	$Ball.set_position(_ball_start_pos)
 	_p2_score += 1
+	$Ball.set_direction(Vector2(-1, 0))
 	_update_display()
 
 func get_p1_score():
@@ -55,3 +57,6 @@ func get_p2_score():
 
 func set_p2_score(p2_score):
 	_p2_score = p2_score
+
+func get_ball():
+	return $Ball
