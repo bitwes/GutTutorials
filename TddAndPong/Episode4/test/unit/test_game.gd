@@ -11,8 +11,20 @@ func before_each():
 func after_each():
 	remove_child(_game)
 	
+func _simulate_p1_score(game):
+	game.get_node('P2KillBox').emit_signal('kill_ball')
+	
+func _simulate_p2_score(game):
+	game.get_node('P1KillBox').emit_signal('kill_ball')
+
 func test_can_make_game():
 	assert_not_null(Game.instance())
+	
+func test_get_set_p1_score():
+	assert_accessors(_game, 'p1_score', 0, 10)
+	
+func test_get_set_p2_score():
+	assert_accessors(_game, 'p2_score', 0, 10)
 	
 func test_when_p1_killbox_emits_kill_ball_then_ball_is_recentered():
 	var ball = _game.get_ball()
@@ -31,3 +43,30 @@ func test_when_p2_killbox_emits_kill_ball_then_ball_is_recentered():
 	ball.set_position(Vector2(1, 1))
 	kb.emit_signal('kill_ball')
 	assert_eq(ball.get_position(), orig_pos)
+
+func test_when_p1_kill_box_kills_ball_p2_score_increases():
+	_simulate_p2_score(_game)
+	assert_eq(_game.get_p2_score(), 1)
+	
+func test_when_p2_kill_box_kills_ball_p1_score_increases():
+	_simulate_p1_score(_game)
+	assert_eq(_game.get_p1_score(), 1)
+	
+func test_score_labels_show_score_on_start():
+	assert_eq(_game.get_node("P1Score").get_text(), '0', 'p1 initial score')
+	assert_eq(_game.get_node("P2Score").get_text(), '0', 'p2 initial score')
+	
+func test_when_p1_scores_then_score_is_update():
+	_simulate_p1_score(_game)
+	assert_eq(_game.get_node("P1Score").get_text(), '1')
+	
+func test_when_p2_scores_then_score_is_update():
+	_simulate_p2_score(_game)
+	assert_eq(_game.get_node("P2Score").get_text(), '1')
+
+	
+	
+	
+	
+	
+	

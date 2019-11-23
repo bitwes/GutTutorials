@@ -32,5 +32,19 @@ position = Vector2( 285, 289.5 )
 [node name="P2KillBox" parent="." instance=ExtResource( 5 )]
 position = Vector2( 667.5, 289.5 )
 
+[node name="P1Score" type="Label" parent="."]
+margin_left = 373.0
+margin_top = 12.6667
+margin_right = 432.0
+margin_bottom = 26.6667
+text = "p1  score"
+
+[node name="P2Score" type="Label" parent="."]
+margin_left = 497.833
+margin_top = 13.0
+margin_right = 556.833
+margin_bottom = 27.0
+text = "p2  score"
+
 [connection signal="kill_ball" from="P1KillBox" to="." method="_on_P1KillBox_kill_ball"]
 [connection signal="kill_ball" from="P2KillBox" to="." method="_on_P2KillBox_kill_ball"]
