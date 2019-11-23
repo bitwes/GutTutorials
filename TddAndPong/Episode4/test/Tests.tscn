@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/gut/gut.gd" type="Script" id=1]
+[ext_resource path="res://addons/gut/icon.png" type="Texture" id=2]
+
+[node name="Tests" type="Node2D"]
+
+[node name="Gut" type="Control" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 740.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 740, 250 )
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_icon": ExtResource( 2 )
+}
+_select_script = "test_paddle"
+_run_on_load = true
+_should_maximize = true
+_yield_between_tests = false
+_include_subdirectories = true
+_directory1 = "res://test"
+_double_strategy = 1
+
