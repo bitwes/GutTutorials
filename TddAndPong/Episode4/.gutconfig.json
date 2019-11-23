@@ -7,7 +7,7 @@
 "opacity":100,
 "prefix":"test_",
 "selected":"",
-"should_exit":false,
+"should_exit":true,
 "should_exit_on_success":false,
 "should_maximize":false,
 "suffix":".gd",
