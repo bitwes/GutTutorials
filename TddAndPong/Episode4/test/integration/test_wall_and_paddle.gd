@@ -8,17 +8,14 @@ func test_wall_and_paddle_can_collide_without_error():
 	var wall = Wall.instance()
 	
 	wall.set_position(Vector2(80, 80))
-	paddle.set_position(Vector2(100, 150))
+	paddle.set_position(Vector2(100, 100))
 	
 	add_child(paddle)
 	add_child(wall)
 	
-	paddle.set_speed(50)
-	paddle.move_up(1)	
-	
 	yield(yield_for(.5), YIELD)
 	assert_true(true, 'we got here')
 	
-#	remove_child(paddle)
-#	remove_child(wall)
+	remove_child(paddle)
+	remove_child(wall)
 	

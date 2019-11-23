@@ -6,6 +6,7 @@
 extents = Vector2( 10, 54.8 )
 
 [node name="Paddle" type="Area2D"]
+collision_mask = 2
 script = ExtResource( 1 )
 
 [node name="Shape" type="CollisionShape2D" parent="."]
