@@ -10,27 +10,27 @@
 script = ExtResource( 1 )
 
 [node name="Ball" parent="." instance=ExtResource( 2 )]
-position = Vector2( 462, 218 )
+position = Vector2( 487.5, 239 )
 
 [node name="TopWall" parent="." instance=ExtResource( 3 )]
-position = Vector2( 464, 156 )
+position = Vector2( 504.5, 42 )
 _color = Color( 0.941176, 0.0784314, 0.0784314, 1 )
 
 [node name="BottomWall" parent="." instance=ExtResource( 3 )]
-position = Vector2( 469, 291 )
+position = Vector2( 484, 585 )
 _color = Color( 0.0431373, 0.909804, 0.2, 1 )
 
 [node name="P1Paddle" parent="." instance=ExtResource( 4 )]
-position = Vector2( 352, 225 )
+position = Vector2( 32.5001, 295.5 )
 
 [node name="P2Paddle" parent="." instance=ExtResource( 4 )]
-position = Vector2( 578, 218 )
+position = Vector2( 971, 287 )
 
 [node name="P1KillBox" parent="." instance=ExtResource( 5 )]
-position = Vector2( 292.5, 9 )
+position = Vector2( -15, 7.5 )
 
 [node name="P2KillBox" parent="." instance=ExtResource( 5 )]
-position = Vector2( 670.5, 0 )
+position = Vector2( 1047, 7.5 )
 
 [node name="P1Score" type="Label" parent="."]
 margin_left = 351.0
