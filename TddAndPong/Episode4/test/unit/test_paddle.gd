@@ -6,6 +6,9 @@ var Ball = load('res://scripts/ball.gd')
 func test_can_make_paddle():
 	assert_not_null(Paddle.new())
 
+func test_can_get_set_speed():
+	assert_accessors(Paddle.new(), 'speed', 10, 100)
+
 func test_bounce_inverts_x():
 	var ball = double(Ball).new()
 	var paddle = Paddle.new()
@@ -52,5 +55,27 @@ func test_bounce_changes_y_randomly():
 	
 	assert_between(min_y, -.5, -.3)
 	assert_between(max_y, .3, .5)
-		
-		
+
+func test_move_up_moves_by_speed_times_delta():
+	var paddle = Paddle.new()
+	paddle.set_position(Vector2(0, 300))
+	var orig_pos = paddle.get_position()
+	paddle.set_speed(20)
+	paddle.move_up(.5)
+	assert_eq(paddle.get_position().y, orig_pos.y - 10, 'moves up by .5 * 20')
+	
+	
+func test_move_down_moves_by_speed_times_delta():
+	var paddle = Paddle.new()
+	paddle.set_position(Vector2(0, 300))
+	var orig_pos = paddle.get_position()
+	paddle.set_speed(30)
+	paddle.move_down(.5)
+	assert_eq(paddle.get_position().y, orig_pos.y + 15, 'moves up by .5 * 30')
+	
+	
+	
+	
+	
+	
+	
