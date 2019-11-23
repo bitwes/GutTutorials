@@ -3,6 +3,9 @@ extends Node2D
 var _ball_start_pos = null
 var _p1_score = 0
 var _p2_score = 0
+var _max_score = 10
+
+signal game_over
 
 func _ready():
 	$Ball.set_speed(300)
@@ -24,18 +27,25 @@ func _process(delta):
 	if Input.is_action_pressed("p2_down"):
 		$P2Paddle.move_down(delta)
 
+func _game_over():
+	emit_signal('game_over')
+	$Ball.set_speed(0)
 
 func _on_P2KillBox_kill_ball():
 	$Ball.set_position(_ball_start_pos)
 	_p1_score += 1
 	_update_display()
+	if(_p1_score == _max_score):
+		_game_over()
 
 
 func _on_P1KillBox_kill_ball():
 	$Ball.set_position(_ball_start_pos)
 	_p2_score += 1
 	_update_display()
-
+	if(_p2_score == _max_score):
+		_game_over()
+		
 func _update_display():
 	$P1Score.set_text(str(_p1_score))
 	$P2Score.set_text(str(_p2_score))
@@ -54,4 +64,10 @@ func get_p2_score():
 
 func set_p2_score(p2_score):
 	_p2_score = p2_score
+
+func get_max_score():
+	return _max_score
+
+func set_max_score(max_score):
+	_max_score = max_score
 	
