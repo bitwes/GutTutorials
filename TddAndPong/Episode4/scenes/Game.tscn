@@ -20,7 +20,7 @@ position = Vector2( 469, 291 )
 _color = Color( 0.0431373, 0.909804, 0.2, 1 )
 
 [node name="P1Paddle" parent="." instance=ExtResource( 4 )]
-position = Vector2( 353, 225 )
+position = Vector2( 352, 225 )
 
 [node name="P2Paddle" parent="." instance=ExtResource( 4 )]
 position = Vector2( 578, 218 )
