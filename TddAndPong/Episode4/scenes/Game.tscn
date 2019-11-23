@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/game.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Ball.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Wall.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Paddle.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/KillBox.tscn" type="PackedScene" id=5]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -25,3 +26,11 @@ position = Vector2( 352, 225 )
 [node name="P2Paddle" parent="." instance=ExtResource( 4 )]
 position = Vector2( 578, 218 )
 
+[node name="P1KillBox" parent="." instance=ExtResource( 5 )]
+position = Vector2( 292.5, 9 )
+
+[node name="P2KillBox" parent="." instance=ExtResource( 5 )]
+position = Vector2( 670.5, 0 )
+
+[connection signal="kill_ball" from="P1KillBox" to="." method="_on_P1KillBox_kill_ball"]
+[connection signal="kill_ball" from="P2KillBox" to="." method="_on_P2KillBox_kill_ball"]
