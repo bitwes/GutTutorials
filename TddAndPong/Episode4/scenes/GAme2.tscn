@@ -17,11 +17,15 @@ extents = Vector2( 600, 10 )
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
 
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2( 499.5, -25.5 )
+points = PoolVector2Array( 0, 0, 0, 678 )
+texture_mode = 54
+
 [node name="Ball" parent="." instance=ExtResource( 2 )]
 position = Vector2( 501, 294.5 )
 
 [node name="TopWall" parent="." instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( 489.5, 54 )
 _color = Color( 0.941176, 0.0784314, 0.0784314, 1 )
 
@@ -56,12 +60,17 @@ margin_bottom = 26.6667
 text = "p1  score"
 
 [node name="P2Score" type="Label" parent="."]
-margin_left = 497.833
-margin_top = 13.0
-margin_right = 556.833
-margin_bottom = 27.0
+margin_left = 581.833
+margin_top = 16.0
+margin_right = 640.833
+margin_bottom = 30.0
 text = "p2  score"
 
+[node name="Wall" parent="." instance=ExtResource( 3 )]
+position = Vector2( 498, 226.5 )
+
+[node name="Wall2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 498, 349.5 )
 [connection signal="kill_ball" from="P1KillBox" to="." method="_on_P1KillBox_kill_ball"]
 [connection signal="kill_ball" from="P2KillBox" to="." method="_on_P2KillBox_kill_ball"]
 

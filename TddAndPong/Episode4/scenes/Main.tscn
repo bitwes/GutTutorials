@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/main.gd" type="Script" id=1]
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="StandardCourt" type="Button" parent="."]
+margin_left = 198.0
+margin_top = 154.5
+margin_right = 424.0
+margin_bottom = 259.5
+text = "Standard Court"
+
+[node name="ChannelCourt" type="Button" parent="."]
+margin_left = 457.5
+margin_top = 154.5
+margin_right = 683.5
+margin_bottom = 259.5
+text = "ChannelCourt"
+[connection signal="pressed" from="StandardCourt" to="." method="_on_StandardCourt_pressed"]
+[connection signal="pressed" from="ChannelCourt" to="." method="_on_ChannelCourt_pressed"]
