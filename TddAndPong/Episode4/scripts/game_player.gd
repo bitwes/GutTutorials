@@ -11,6 +11,8 @@ func _main_menu():
 	var main_menu = load('res://scenes/Main.tscn').instance()
 	call_deferred("_goto_scene_instance", main_menu)
 
+func _process(delta):
+	$BallSpeed.set_text(str(_game.get_ball().get_speed()))
 
 func _ready():
 	$GameOverDisplay.hide()

@@ -6,6 +6,7 @@
 script = ExtResource( 1 )
 
 [node name="GameOverDisplay" type="Panel" parent="."]
+editor/display_folded = true
 margin_left = 317.5
 margin_top = 154.0
 margin_right = 724.5
@@ -25,4 +26,10 @@ margin_right = 405.5
 margin_bottom = 74.0
 text = "Game Over"
 align = 1
+
+[node name="BallSpeed" type="Label" parent="."]
+margin_left = 13.5
+margin_top = 10.5
+margin_right = 53.5
+margin_bottom = 24.5
 [connection signal="pressed" from="GameOverDisplay/MainMenu" to="." method="_on_MainMenu_pressed"]

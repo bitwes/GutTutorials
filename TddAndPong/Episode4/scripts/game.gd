@@ -11,12 +11,14 @@ func _ready():
 	$Ball.set_speed(300)
 	$Ball.set_direction(Vector2(1, 1))
 	_ball_start_pos = $Ball.get_position()
-	
+
 	$P1Paddle.set_speed(300)
+	$P1Paddle.set_bounce_speed(20)
 	$P2Paddle.set_speed(300)
-	
+	$P2Paddle.set_bounce_speed(20)
+
 	_update_display()
-	
+
 func _process(delta):
 	if Input.is_action_pressed("p1_up"):
 		$P1Paddle.move_up(delta)
@@ -45,14 +47,14 @@ func _on_P1KillBox_kill_ball():
 	_update_display()
 	if(_p2_score == _max_score):
 		_game_over()
-		
+
 func _update_display():
 	$P1Score.set_text(str(_p1_score))
 	$P2Score.set_text(str(_p2_score))
 
 func get_ball():
 	return $Ball
-	
+
 func get_p1_score():
 	return _p1_score
 
@@ -70,4 +72,3 @@ func get_max_score():
 
 func set_max_score(max_score):
 	_max_score = max_score
-	

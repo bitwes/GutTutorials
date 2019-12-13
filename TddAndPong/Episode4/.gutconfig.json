@@ -3,7 +3,7 @@
 "ignore_pause":false,
 "include_subdirs":true,
 "inner_class":"",
-"log_level":1,
+"log_level":3,
 "opacity":100,
 "prefix":"test_",
 "selected":"",
