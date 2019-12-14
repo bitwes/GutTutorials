@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/game.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Ball.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Wall.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Paddle.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/KillBox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/BonusSpawn.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 resource_local_to_scene = true
@@ -71,8 +72,16 @@ position = Vector2( 498, 226.5 )
 
 [node name="Wall2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 498, 349.5 )
+
+[node name="BonusSpawn" parent="." instance=ExtResource( 6 )]
+position = Vector2( 499.5, 132 )
+
+[node name="BonusSpawn2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 501, 460.5 )
 [connection signal="kill_ball" from="P1KillBox" to="." method="_on_P1KillBox_kill_ball"]
 [connection signal="kill_ball" from="P2KillBox" to="." method="_on_P2KillBox_kill_ball"]
+[connection signal="bonus" from="BonusSpawn" to="." method="_on_BonusSpawn_bonus"]
+[connection signal="bonus" from="BonusSpawn2" to="." method="_on_BonusSpawn_bonus"]
 
 [editable path="TopWall"]
 

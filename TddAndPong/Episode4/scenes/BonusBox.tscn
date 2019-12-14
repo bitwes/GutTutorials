@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/bonus_box.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 56.8998, 41.2 )
+
+[node name="BonusBox" type="Area2D"]
+collision_mask = 2
+script = ExtResource( 1 )
+_color = Color( 0.121569, 0.827451, 0.25098, 0.560784 )
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -2.5 )
+shape = SubResource( 1 )
+[connection signal="area_entered" from="." to="." method="_on_BonusBox_area_entered"]

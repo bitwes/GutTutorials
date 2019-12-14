@@ -72,3 +72,7 @@ func get_max_score():
 
 func set_max_score(max_score):
 	_max_score = max_score
+
+
+func _on_BonusSpawn_bonus(bonus):
+	print('bonus! ', bonus)
