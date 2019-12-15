@@ -22,7 +22,7 @@ func get_game():
 
 func set_game(game):
 	_game = game
-	_game.set_max_score(1)
+	_game.set_max_score(10)
 	_game.connect('game_over', self, '_on_game_over')
 	add_child(_game)
 	_game.set_z_index(-100)

@@ -4,11 +4,20 @@ var _speed = 10
 var _bounce_speed = 0
 
 func bounce(ball):
-	var new_y = rand_range(-.5, .5)
+	var multiplier = 1
+	var low = 0
+	var  high = .3
+	if(ball.get_position().y <= get_position().y):
+		low  = -.3
+		high = 0
+
+	var new_y = rand_range(low,  high)
 	var new_x = ball.get_direction().x * -1
 	ball.set_direction(Vector2(new_x, new_y))
 	var speed  = ball.get_speed() + _bounce_speed
 	ball.set_speed(speed)
+
+	ball.set_last_paddle_hit(self)
 
 func _draw():
 	var e = $Shape.shape.extents
@@ -35,3 +44,10 @@ func get_bounce_speed():
 
 func set_bounce_speed(bounce_speed):
 	_bounce_speed = bounce_speed
+
+func set_size(height):
+	$Shape.shape.extents.y = height
+	update()
+
+func get_size():
+	return $Shape.shape.extents.y

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://scripts/game.gd" type="Script" id=1]
+[ext_resource path="res://scripts/game2.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Ball.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Wall.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Paddle.tscn" type="PackedScene" id=4]
@@ -9,11 +9,11 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 resource_local_to_scene = true
-extents = Vector2( 600, 10 )
+extents = Vector2( 600, 5 )
 
 [sub_resource type="RectangleShape2D" id=2]
 resource_local_to_scene = true
-extents = Vector2( 600, 10 )
+extents = Vector2( 600, 5 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -34,7 +34,6 @@ _color = Color( 0.941176, 0.0784314, 0.0784314, 1 )
 shape = SubResource( 1 )
 
 [node name="BottomWall" parent="." instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( 508, 586.5 )
 _color = Color( 0.0431373, 0.909804, 0.2, 1 )
 
@@ -77,11 +76,19 @@ position = Vector2( 498, 349.5 )
 position = Vector2( 499.5, 132 )
 
 [node name="BonusSpawn2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 501, 460.5 )
+position = Vector2( 501, 454.5 )
+
+[node name="BonusSpawn3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 723, 286.5 )
+
+[node name="BonusSpawn4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 256.5, 295.5 )
 [connection signal="kill_ball" from="P1KillBox" to="." method="_on_P1KillBox_kill_ball"]
 [connection signal="kill_ball" from="P2KillBox" to="." method="_on_P2KillBox_kill_ball"]
 [connection signal="bonus" from="BonusSpawn" to="." method="_on_BonusSpawn_bonus"]
 [connection signal="bonus" from="BonusSpawn2" to="." method="_on_BonusSpawn_bonus"]
+[connection signal="bonus" from="BonusSpawn3" to="." method="_on_BonusSpawn_bonus"]
+[connection signal="bonus" from="BonusSpawn4" to="." method="_on_BonusSpawn_bonus"]
 
 [editable path="TopWall"]
 

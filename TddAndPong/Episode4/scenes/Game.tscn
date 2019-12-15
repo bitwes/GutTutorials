@@ -61,7 +61,6 @@ margin_top = 13.0
 margin_right = 556.833
 margin_bottom = 27.0
 text = "p2  score"
-
 [connection signal="kill_ball" from="P1KillBox" to="." method="_on_P1KillBox_kill_ball"]
 [connection signal="kill_ball" from="P2KillBox" to="." method="_on_P2KillBox_kill_ball"]
 

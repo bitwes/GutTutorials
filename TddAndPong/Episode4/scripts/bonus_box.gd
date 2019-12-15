@@ -19,6 +19,8 @@ func _draw():
 func _on_BonusBox_area_entered(area):
 	if(_enabled):
 		emit_signal('bonus', _bonus)
+		_enabled = false
+		$AnimationPlayer.play('award')
 
 func get_bonus():
 	return _bonus
@@ -27,7 +29,13 @@ func set_bonus(bonus):
 	_bonus = bonus
 
 func set_enabled(enabled):
-	_enabled = enabled
 	
+	if(enabled and !_enabled):
+		$AnimationPlayer.play("enable")
+		update()
+	elif(!enabled  and  _enabled):
+		$AnimationPlayer.play("disable")
+		update()
+	_enabled = enabled
 func is_enabled():
 	return _enabled

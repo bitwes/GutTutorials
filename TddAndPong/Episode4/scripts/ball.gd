@@ -4,6 +4,8 @@ var _speed = 0
 var _direction = Vector2(0, 0)
 var _max_speed = 900
 
+var _last_paddle_hit = null
+
 func get_speed():
 	return _speed
 
@@ -31,3 +33,10 @@ func get_max_speed():
 
 func set_max_speed(max_speed):
 	_max_speed = max_speed
+
+
+func get_last_paddle_hit():
+	return _last_paddle_hit
+
+func set_last_paddle_hit(last_paddle_hit):
+	_last_paddle_hit = last_paddle_hit
