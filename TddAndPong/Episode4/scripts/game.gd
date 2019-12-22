@@ -2,12 +2,10 @@ extends Node2D
 
 var BonusSpawner = load('res://scripts/bonus_spawn.gd')
 
-
-
-
 var _ball_start_pos = null
 var _ball_start_speed = 300
 var _ball_start_direction = Vector2(1, 0)
+var _paddle_start_speed = 300
 var _bonus_handler = load('res://scripts/bonus_handler.gd').new()
 var _bonus_spawners = []
 
@@ -30,16 +28,19 @@ func _ready():
 	_populate_spawners()
 
 	_ball_start_pos = $Ball.get_position()
+	$Ball.get_speed_props().set_default(_ball_start_speed)
 	_reset_ball(-1)
 
-	$P1Paddle.set_speed(300)
+	$P1Paddle.set_speed(_paddle_start_speed)
 	$P1Paddle.set_bounce_speed(20)
-	$P2Paddle.set_speed(300)
+	$P2Paddle.set_speed(_paddle_start_speed)
 	$P2Paddle.set_bounce_speed(20)
 
 	_bonus_handler.set_game(self)
 
 	_update_display()
+
+
 
 func _process(delta):
 	if Input.is_action_pressed("p1_up"):
@@ -74,11 +75,28 @@ func _score():
 		_game_over()
 	if(_p2_score == _max_score):
 		_game_over()
+	reset_court()
+
+func _reset_paddle(paddle, y_pos):
+	paddle.set_position(Vector2(paddle.get_position().x, y_pos))
+	paddle.set_speed(_paddle_start_speed)
+	paddle.reset()
+
+func reset_court():
+	var view_size = OS.get_real_window_size()
+	$Ball.set_position(_ball_start_pos)
+	$Ball.set_speed(_ball_start_speed)
+
+	_reset_ball(1)
+	_reset_paddle($P1Paddle, view_size.y / 2)
+	_reset_paddle($P2Paddle, view_size.y / 2)
+
 
 func _reset_ball(new_x):
 	$Ball.set_position(_ball_start_pos)
 	$Ball.set_speed(_ball_start_speed)
 	$Ball.set_direction(Vector2(new_x,  0))
+	$Ball.get_speed_props().reset()
 
 func _on_P2KillBox_kill_ball():
 	_p1_scores()
