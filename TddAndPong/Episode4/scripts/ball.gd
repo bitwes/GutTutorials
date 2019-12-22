@@ -1,6 +1,6 @@
 extends Area2D
 
-var Mmdc = load('res://scripts/mmbc_property.gd')
+var Mmdc = load('res://scripts/mmdc_property.gd')
 
 var _speed = Mmdc.new(100, 900, 100)
 var _direction = Vector2(0, 0)

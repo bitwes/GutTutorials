@@ -1,5 +1,5 @@
 extends Area2D
-var  Mmdc =  load('res://scripts/mmbc_property.gd')
+var  Mmdc =  load('res://scripts/mmdc_property.gd')
 
 var _speed = 10
 var _bounce_speed = 0
