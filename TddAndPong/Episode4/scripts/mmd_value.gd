@@ -1,13 +1,13 @@
 var _min = 0
 var _max = 0
-var _current = 0
+var _value = 0
 var _default =  0
 
 func _init(low=0, high=0, default=0):
 	_min  =  low
 	_max = high
 	set_default(default)
-	set_current(default)
+	set_value(default)
 
 func _restrict_value(val):
 	return max(min(val, _max), _min)
@@ -17,7 +17,7 @@ func get_min():
 
 func set_min(val):
 	_min = val
-	set_current(_current)
+	set_value(_value)
 	set_default(_default)
 
 func get_max():
@@ -25,7 +25,7 @@ func get_max():
 
 func set_max(val):
 	_max = val
-	set_current(_current)
+	set_value(_value)
 	set_default(_default)
 
 func get_default():
@@ -34,23 +34,23 @@ func get_default():
 func set_default(default):
 	_default = _restrict_value(default)
 
-func get_current():
-	return _current
+func get_value():
+	return _value
 
-func set_current(current):
-	_current = _restrict_value(current)
+func set_value(current):
+	_value = _restrict_value(current)
 
 func increment(by):
-	set_current(_current + by)
+	set_value(_value + by)
 
 func reset():
-	_current = _default
+	_value = _default
 
 func is_max():
-	return  _current == _max
+	return  _value == _max
 
 func is_min():
-	return _current == _min
+	return _value == _min
 
 func is_default():
-	return _current == _default
+	return _value == _default

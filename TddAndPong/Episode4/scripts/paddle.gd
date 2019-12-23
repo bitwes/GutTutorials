@@ -1,5 +1,5 @@
 extends Area2D
-var  Mmdc =  load('res://scripts/mmdc_property.gd')
+var  Mmdc =  load('res://scripts/mmd_value.gd')
 
 var _speed = 10
 var _bounce_speed = 0
@@ -27,7 +27,7 @@ func _draw():
 	draw_rect(Rect2(e.x * -1, e.y * -1, e.x * 2, e.y * 2), Color(1, 1, 1))#_color)
 
 func _update_height():
-	$Shape.shape.extents.y = _height.get_current() / 2
+	$Shape.shape.extents.y = _height.get_value() / 2
 	update()
 
 func _on_Paddle_area_entered(area):
@@ -52,11 +52,11 @@ func set_bounce_speed(bounce_speed):
 	_bounce_speed = bounce_speed
 
 func set_size(height):
-	_height.set_current(height)
+	_height.set_value(height)
 	_update_height()
 
 func get_size():
-	return _height.get_current()
+	return _height.get_value()
 
 func reset():
 	_height.reset()
