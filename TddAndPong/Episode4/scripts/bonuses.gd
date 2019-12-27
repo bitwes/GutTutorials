@@ -21,8 +21,8 @@ class PaddleSize:
 		_name  = 'paddle size'
 
 
-class  BallSize:
+class  PaddleSpeed:
 	extends BaseBonus
 
 	func _init():
-		_name  = 'ball size'
+		_name  = 'paddle speed'
