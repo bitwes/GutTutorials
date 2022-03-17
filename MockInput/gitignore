@@ -1,1 +1,2 @@
 addons/gut/*
+!addons/gut/gut.gd
