@@ -92,6 +92,10 @@ window/stretch/aspect="keep_height"
 stretch/aspect="keep_height"
 stretch/mode="2d"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/gut/plugin.cfg" )
+
 [gdnative]
 
 singletons=[  ]
