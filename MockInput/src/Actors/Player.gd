@@ -55,12 +55,10 @@ func _ready():
 func _physics_process(_delta):
 	if(is_on_floor()):
 		_air_jumps = 0
-		
-	# Play jump sound
-	if Input.is_action_just_pressed("jump" + action_suffix) and is_on_floor():
-		sound_jump.play()
 
-	var direction = get_direction()
+	var direction = Vector2(get_x_direction(), 0)
+	if(Input.is_action_just_pressed("jump" + action_suffix)):
+		direction.y = jump()
 
 	var is_jump_interrupted = Input.is_action_just_released("jump" + action_suffix) and _velocity.y < 0.0
 	_velocity = calculate_move_velocity(_velocity, direction, speed, is_jump_interrupted)
@@ -96,17 +94,19 @@ func _physics_process(_delta):
 		animation_player.play(animation)
 
 
-func get_direction():
-	var dir_x = Input.get_action_strength("move_right" + action_suffix) - Input.get_action_strength("move_left" + action_suffix)
-	var dir_y = 0
-	
-	if Input.is_action_just_pressed("jump" + action_suffix) and (is_on_floor() or _air_jumps < _max_air_jumps):
-		dir_y = -1
+func get_x_direction():
+	return Input.get_action_strength("move_right" + action_suffix) - Input.get_action_strength("move_left" + action_suffix)
+
+
+func jump():
+	var to_return = 0;
+	if(is_on_floor() or _air_jumps < _max_air_jumps):
+		sound_jump.play()
+		to_return = -1
 		if(!is_on_floor()):
 			_air_jumps += 1
+	return to_return
 	
-	return Vector2(dir_x, dir_y)
-
 
 # This function calculates a new velocity whenever you need it.
 # It allows you to interrupt jumps.
