@@ -16,6 +16,8 @@ onready var sprite = $Sprite
 onready var sound_jump = $Jump
 onready var gun = sprite.get_node(@"Gun")
 
+var _air_jumps = 0
+var _max_air_jumps = 1
 
 func _ready():
 	# Static types are necessary here to avoid warnings.
@@ -51,6 +53,9 @@ func _ready():
 # - If you split the character into a state machine or more advanced pattern,
 #   you can easily move individual functions.
 func _physics_process(_delta):
+	if(is_on_floor()):
+		_air_jumps = 0
+		
 	# Play jump sound
 	if Input.is_action_just_pressed("jump" + action_suffix) and is_on_floor():
 		sound_jump.play()
@@ -92,10 +97,15 @@ func _physics_process(_delta):
 
 
 func get_direction():
-	return Vector2(
-		Input.get_action_strength("move_right" + action_suffix) - Input.get_action_strength("move_left" + action_suffix),
-		-1 if is_on_floor() and Input.is_action_just_pressed("jump" + action_suffix) else 0
-	)
+	var dir_x = Input.get_action_strength("move_right" + action_suffix) - Input.get_action_strength("move_left" + action_suffix)
+	var dir_y = 0
+	
+	if Input.is_action_just_pressed("jump" + action_suffix) and (is_on_floor() or _air_jumps < _max_air_jumps):
+		dir_y = -1
+		if(!is_on_floor()):
+			_air_jumps += 1
+	
+	return Vector2(dir_x, dir_y)
 
 
 # This function calculates a new velocity whenever you need it.
@@ -132,3 +142,10 @@ func get_new_animation(is_shooting = false):
 	if is_shooting:
 		animation_new += "_weapon"
 	return animation_new
+
+
+func get_max_air_jumps():
+	return _max_air_jumps
+	
+func set_max_air_jumps(value):
+	_max_air_jumps = value
